@@ -1,0 +1,219 @@
+Infernal Statistics:
+
+1.)   m,b=np.polyfit(d1['Date_numeric'], d1['Population age 18-64'],1)
+      _=plt.plot(d1['Date_numeric'], m*d1['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d2['Date_numeric'], d2['Population age 18-64'],1)
+      _=plt.plot(d2['Date_numeric'], m*d2['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d3['Date_numeric'], d3['Population age 18-64'],1)
+      _=plt.plot(d3['Date_numeric'], m*d3['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d4['Date_numeric'], d4['Population age 18-64'],1)
+      _=plt.plot(d4['Date_numeric'], m*d4['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d5['Date_numeric'], d5['Population age 18-64'],1)
+      _=plt.plot(d5['Date_numeric'], m*d5['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d6['Date_numeric'], d6['Population age 18-64'],1)
+      _=plt.plot(d6['Date_numeric'], m*d6['Date_numeric']+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(d7['Date_numeric'], d7['Population age 18-64'],1)
+      _=plt.plot(d7['Date_numeric'], m*d7['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d8['Date_numeric'], d8['Population age 18-64'],1)
+      _=plt.plot(d8['Date_numeric'], m*d8['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d9['Date_numeric'], d9['Population age 18-64'],1)
+      _=plt.plot(d9['Date_numeric'], m*d9['Date_numeric']+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(d10['Date_numeric'], d10['Population age 18-64'],1)
+      _=plt.plot(d10['Date_numeric'], m*d10['Date_numeric']+b, color='m', linestyle='dashed')
+plotted linear regression lines of populations grouped by region.
+
+2.)   corrs=pd.concat(d_list_pop, axis=1)
+      corrs.columns=['ATL', 'BOS', 'CHI', 'DAL', 'DEN', 'KCM', 'NYC', 'PHL', 'SEA', 'SFO']
+      corrs=corrs.corr()
+      sns.set()
+      sns.heatmap(corrs, cmap='coolwarm')
+Created a heatmap of the regions to compare corelations between populations.
+
+3.)   m,b=np.polyfit(AL[xcolumn], AL[ycolumn],1)
+      plt.plot(AL[xcolumn], m*AL[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(FL[xcolumn], FL[ycolumn],1)
+      plt.plot(FL[xcolumn], m*FL[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(GA[xcolumn], GA[ycolumn],1)
+      plt.plot(GA[xcolumn], m*GA[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(KY[xcolumn], KY[ycolumn],1)
+      plt.plot(KY[xcolumn], m*KY[xcolumn]+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(MS[xcolumn], MS[ycolumn],1)
+      plt.plot(MS[xcolumn], m*MS[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(NC[xcolumn], NC[ycolumn],1)
+      plt.plot(NC[xcolumn], m*NC[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(SC[xcolumn], SC[ycolumn],1)
+      plt.plot(SC[xcolumn], m*SC[xcolumn]+b, color='m', linestyle='dashed')
+ 
+      m,b=np.polyfit(TN[xcolumn], TN[ycolumn],1)
+      plt.plot(TN[xcolumn], m*TN[xcolumn]+b, color='m', linestyle='dashed')
+ Plotted linear regression lines by state for ATL.
+ 
+ 4.)  m,b=np.polyfit(MA[xcolumn], MA[ycolumn],1)
+      plt.plot(MA[xcolumn], m*MA[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(ME[xcolumn], ME[ycolumn],1)
+      plt.plot(ME[xcolumn], m*ME[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(NH[xcolumn], NH[ycolumn],1)
+      plt.plot(NH[xcolumn], m*NH[xcolumn]+b, color='m', linestyle='dashed')
+ 
+      m,b=np.polyfit(VT[xcolumn], VT[ycolumn],1)
+      plt.plot(VT[xcolumn], m*VT[xcolumn]+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(RI[xcolumn], RI[ycolumn],1)
+      plt.plot(RI[xcolumn], m*RI[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(CT[xcolumn], CT[ycolumn],1)
+      plt.plot(CT[xcolumn], m*CT[xcolumn]+b, color='m', linestyle='dashed')
+ Plotted linear regression lines by state for BOS.
+ 
+ 5.)  m,b=np.polyfit(IL[xcolumn], IL[ycolumn],1)
+      plt.plot(IL[xcolumn], m*IL[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(IN[xcolumn], IN[ycolumn],1)
+      plt.plot(IN[xcolumn], m*IN[xcolumn]+b, color='m', linestyle='dashed')
+
+       m,b=np.polyfit(MI[xcolumn], MI[ycolumn],1)
+       plt.plot(MI[xcolumn], m*MI[xcolumn]+b, color='m', linestyle='dashed')
+
+       m,b=np.polyfit(MN[xcolumn], MN[ycolumn],1)
+       plt.plot(MN[xcolumn], m*MN[xcolumn]+b, color='m', linestyle='dashed')
+
+       m,b=np.polyfit(OH[xcolumn], OH[ycolumn],1)
+       plt.plot(CT[xcolumn], m*OH[xcolumn]+b, color='m', linestyle='dashed')
+       
+       m,b=np.polyfit(WI[xcolumn], WI[ycolumn],1)
+       plt.plot(WI[xcolumn], m*WI[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for CHI.
+
+6.)   m,b=np.polyfit(AR[xcolumn], AR[ycolumn],1)
+      plt.plot(AR[xcolumn], m*AR[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(LA[xcolumn], LA[ycolumn],1)
+      plt.plot(LA[xcolumn], m*LA[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(NM[xcolumn], NM[ycolumn],1)
+      plt.plot(NM[xcolumn], m*NM[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(OK[xcolumn], OK[ycolumn],1)
+      plt.plot(OK[xcolumn], m*OK[xcolumn]+b, color='m', linestyle='dashed')
+ 
+      m,b=np.polyfit(TX[xcolumn], TX[ycolumn],1)
+      plt.plot(TX[xcolumn], m*TX[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for DAL
+
+7.)   m,b=np.polyfit(CO[xcolumn], CO[ycolumn],1)
+      plt.plot(CO[xcolumn], m*CO[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(MT[xcolumn], MT[ycolumn],1)
+      plt.plot(MT[xcolumn], m*MT[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(ND[xcolumn], ND[ycolumn],1)
+      plt.plot(ND[xcolumn], m*ND[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(SD[xcolumn], SD[ycolumn],1)
+      plt.plot(SD[xcolumn], m*SD[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(UT[xcolumn], UT[ycolumn],1)
+      plt.plot(UT[xcolumn], m*UT[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(WY[xcolumn], WY[ycolumn],1)
+      plt.plot(WY[xcolumn], m*WY[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for DEN.
+
+8.)   m,b=np.polyfit(IA[xcolumn], IA[ycolumn],1)
+      plt.plot(IA[xcolumn], m*IA[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(KS[xcolumn], KS[ycolumn],1)
+      plt.plot(KS[xcolumn], m*KS[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(OK[xcolumn], MO[ycolumn],1)
+      plt.plot(MO[xcolumn], m*MO[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(NE[xcolumn], NE[ycolumn],1)
+      plt.plot(NE[xcolumn], m*NE[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for KCM.
+
+9.)   m,b=np.polyfit(NY[xcolumn], NY[ycolumn],1)
+      plt.plot(NY[xcolumn], m*NY[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(NJ[xcolumn], NJ[ycolumn],1)
+      plt.plot(NJ[xcolumn], m*NJ[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for NYC.
+
+10.)  m,b=np.polyfit(DC[xcolumn], DC[ycolumn],1)
+      plt.plot(DC[xcolumn], m*DC[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(DE[xcolumn], DE[ycolumn],1)
+      plt.plot(DE[xcolumn], m*DE[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(MD[xcolumn], MD[ycolumn],1)
+      plt.plot(MD[xcolumn], m*MD[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(PA[xcolumn], PA[ycolumn],1)
+      plt.plot(PA[xcolumn], m*PA[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(VA[xcolumn], VA[ycolumn],1)
+      plt.plot(VA[xcolumn], m*VA[xcolumn]+b, color='m', linestyle='dashed')
+      
+      m,b=np.polyfit(WV[xcolumn], WV[ycolumn],1)
+      plt.plot(WV[xcolumn], m*WV[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for PHL.
+
+11.)  m,b=np.polyfit(AK[xcolumn], AK[ycolumn],1)
+      plt.plot(AK[xcolumn], m*AK[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(ID[xcolumn], ID[ycolumn],1)
+      plt.plot(ID[xcolumn], m*ID[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(OR[xcolumn], OR[ycolumn],1)
+      plt.plot(OR[xcolumn], m*OR[xcolumn]+b, color='m', linestyle='dashed')
+ 
+      m,b=np.polyfit(WA[xcolumn], WA[ycolumn],1)
+      plt.plot(WA[xcolumn], m*WA[xcolumn]+b, color='m', linestyle='dashed')
+ Plotting linear regression lines by state for SEA.
+ 
+12.)  m,b=np.polyfit(AZ[xcolumn], AZ[ycolumn],1)
+      plt.plot(AZ[xcolumn], m*AZ[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(CA[xcolumn], CA[ycolumn],1)
+      plt.plot(CA[xcolumn], m*CA[xcolumn]+b, color='m', linestyle='dashed')
+
+      m,b=np.polyfit(HI[xcolumn], HI[ycolumn],1)
+      plt.plot(HI[xcolumn], m*HI[xcolumn]+b, color='m', linestyle='dashed')
+  
+      m,b=np.polyfit(NV[xcolumn], NV[ycolumn],1)
+      plt.plot(NV[xcolumn], m*NV[xcolumn]+b, color='m', linestyle='dashed')
+Plotting linear regression lines by state for SFO.
+
+13.)   corrs=pd.concat(d_list_precent, axis=1)
+       corrs.columns=['ATL', 'BOS', 'CHI', 'DAL', 'DEN', 'KCM', 'NYC', 'PHL', 'SEA', 'SFO']
+       corrs=corrs.corr()
+       sns.set()
+       sns.heatmap(corrs, cmap='coolwarm')
+Created a heatmap of the regions to compare corelations between the number of adults on disability.
+  
+
+ 
+
+
+
+ 
+ 
+ 
+
