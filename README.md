@@ -16,14 +16,15 @@ Dropped all the results from Puerto Rico, since there was hardly any information
 2.)  SSA_data['Date_numeric'] = pd.to_numeric(SSA_data['Date'])
 Converted the year column from a datetime object to yearly for easier handling.
 
-3.)  NH_1=SSA_data.loc[(SSA_data['State Code']=='NH ') & (SSA_data['Date_numeric']==2012),'Population age 18-64'].mean()
-     NH_2=SSA_data.loc[(SSA_data['State Code']=='NH ') & (SSA_data['Date_numeric']==2014),'Population age 18-64'].mean()
-     SSA_data.loc[(SSA_data['Date_numeric']==2013) & (SSA_data['State Code']=='NH '),'Population age 18-64'] = (NH_1+NH_2)/2
-
-     NV_1=SSA_data.loc[(SSA_data['State Code']=='NV ') & (SSA_data['Date_numeric']==2012),'Population age 18-64'].mean()
-     NV_2=SSA_data.loc[(SSA_data['State Code']=='NV ') & (SSA_data['Date_numeric']==2014),'Population age 18-64'].mean()
-     SSA_data.loc[(SSA_data['Date_numeric']==2013) & (SSA_data['State Code']=='NV '),'Population age 18-64'] = (NV_1+NV_2)/2
-NH and NV each had outliers that were far outside the rest of their state's data, so the points were replaced using linear interpolation to give points that were in line with a trend up or down.
+3.)  def interpol_pop(state_code):
+         t1=SSA_data.loc[(SSA_data['State Code']== state_code) & (SSA_data['Date_numeric']==2012),'Population age 18-64'].mean()
+         t2=SSA_data.loc[(SSA_data['State Code']== state_code) & (SSA_data['Date_numeric']==2014),'Population age 18-64'].mean()
+         SSA_data.loc[(SSA_data['Date_numeric']==2013) & (SSA_data['State Code']== state_code),'Population age 18-64']=(t1+t2)/2    
+     interpol_pop('NH ')
+     interpol_pop('KY ')
+     interpol_pop('OK ')
+     interpol_pop('NV ')
+NH, KY, OK, and NV each had outliers that were far outside the rest of their state's data, so the points were replaced using linear interpolation to give points that were in line with a trend up or down.
 
 4.)  atl=SSA_data.loc[SSA_data['Region Code']=='ATL']
      bos=SSA_data.loc[SSA_data['Region Code']=='BOS']
@@ -124,5 +125,5 @@ Further information is provided at: https://www.ssa.gov/disability/data/ssa-sa-f
 
 # E.) Initial Findings:
 
-Itialially found that population growth bewteen both states and regions was highly corelated with one another.  There were few states that displayed trend that were counter to the rest of the data set.  There were also a few outliers in 2013 that were not explained in the supporting documentation.  
+Itialially found that population growth between both states and regions was highly corelated with one another.  There were few states that displayed trend that were counter to the rest of the data set.  There were also a few outliers in 2013 that were not explained in the supporting documentation.  Another interesting finding was that although population and the disability rate was highly correlated within states, the correlation broke down when viewing the correlation or even reversed when viewing the region.  This was a surprise given how tighly correlated the rest of the data was.
 
