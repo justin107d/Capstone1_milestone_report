@@ -2,7 +2,7 @@
 
 # A.)  Problem:
 
-The goal of this project was to break down the data presented in a csv and present it in a more understandable fashion.  Populatins of various regions and states were compared with each other in order to identify trends that vary from one another.  
+The way the US population grows and moves can have an interesting effect on various metrics that heavily depend on it.  This project focuses on the way the adult population behaves with the adult disability rate.
 
 # B.) Client
 
