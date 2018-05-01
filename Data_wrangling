@@ -1,4 +1,4 @@
-Data wrangling Steps:
+# Data wrangling Steps:
 
 1.)   SSA_data=SSA_data_dirt.drop('State Code'=='PR')
 Dropped all the results from Puerto Rico, since there was hardly any information attachted to this state code
@@ -6,7 +6,12 @@ Dropped all the results from Puerto Rico, since there was hardly any information
 2.)  SSA_data['Date_numeric'] = pd.to_numeric(SSA_data['Date'])
 Converted the year column from a datetime object to yearly for easier handling.
 
-3.)  atl=SSA_data.loc[SSA_data['Region Code']=='ATL']
+3.) SSA_data['SSA Disabilty Beneficiaries age 18-64'] = SSA_data['SSA Disabilty Beneficiaries age 18-64'].str.replace(',', '') SSA_data['SSI Disabled Child (DC) Beneficiaries'] = SSA_data['SSI Disabled Child (DC) Beneficiaries'].str.replace(',', '') 
+These two columns had commas mixed into some of the values. These lines of code removed them and allowed Python to view the values correctly as integers.
+
+4.) def interpol_pop(state_code): t1=SSA_data.loc[(SSA_data['State Code']== state_code) & (SSA_data['Date_numeric']==2012),'Population age 18-64'].mean() t2=SSA_data.loc[(SSA_data['State Code']== state_code) & (SSA_data['Date_numeric']==2014),'Population age 18-64'].mean() SSA_data.loc[(SSA_data['Date_numeric']==2013) & (SSA_data['State Code']== state_code),'Population age 18-64']=(t1+t2)/2 interpol_pop('NH ') interpol_pop('KY ') interpol_pop('OK ') interpol_pop('NV ') NH, KY, OK, and NV each had outliers that were far outside the rest of their state's data, so the points were replaced using linear interpolation to give points that were in line with a trend up or down.
+
+5.)  atl=SSA_data.loc[SSA_data['Region Code']=='ATL']
      bos=SSA_data.loc[SSA_data['Region Code']=='BOS']
      chi=SSA_data.loc[SSA_data['Region Code']=='CHI']
      dal=SSA_data.loc[SSA_data['Region Code']=='DAL']
@@ -18,7 +23,7 @@ Converted the year column from a datetime object to yearly for easier handling.
      sfo=SSA_data.loc[SSA_data['Region Code']=='SFO']
 Separated regions into their own dataframes to simplify coding
 
-4.)  AL=SSA_data.loc[SSA_data['State Code']=='AL ']
+6.)  AL=SSA_data.loc[SSA_data['State Code']=='AL ']
      FL=SSA_data.loc[SSA_data['State Code']=='FL ']
      GA=SSA_data.loc[SSA_data['State Code']=='GA ']
      KY=SSA_data.loc[SSA_data['State Code']=='KY ']
@@ -28,7 +33,7 @@ Separated regions into their own dataframes to simplify coding
      TN=SSA_data.loc[SSA_data['State Code']=='TN ']
 Separated ATL by state.
 
-5.)  MA=SSA_data.loc[SSA_data['State Code']=='MA ']
+7.)  MA=SSA_data.loc[SSA_data['State Code']=='MA ']
      ME=SSA_data.loc[SSA_data['State Code']=='ME ']
      NH=SSA_data.loc[SSA_data['State Code']=='NH ']
      VT=SSA_data.loc[SSA_data['State Code']=='VT ']
@@ -36,7 +41,7 @@ Separated ATL by state.
      CT=SSA_data.loc[SSA_data['State Code']=='CT ']
 Separated BOS by state.
 
-6.)  IL=SSA_data.loc[SSA_data['State Code']=='IL ']
+8.)  IL=SSA_data.loc[SSA_data['State Code']=='IL ']
      IN=SSA_data.loc[SSA_data['State Code']=='IN ']
      MI=SSA_data.loc[SSA_data['State Code']=='MI ']
      MN=SSA_data.loc[SSA_data['State Code']=='MN ']
@@ -44,14 +49,14 @@ Separated BOS by state.
      WI=SSA_data.loc[SSA_data['State Code']=='WI ']
 separated CHI by state.
 
-7.)  AR=SSA_data.loc[SSA_data['State Code']=='AR ']
+9.)  AR=SSA_data.loc[SSA_data['State Code']=='AR ']
      LA=SSA_data.loc[SSA_data['State Code']=='LA ']
      NM=SSA_data.loc[SSA_data['State Code']=='NM ']
      OK=SSA_data.loc[SSA_data['State Code']=='OK ']
      TX=SSA_data.loc[SSA_data['State Code']=='TX ']
 Separated DAL by state.
      
-8.)  CO=SSA_data.loc[SSA_data['State Code']=='CO ']
+10.)  CO=SSA_data.loc[SSA_data['State Code']=='CO ']
      MT=SSA_data.loc[SSA_data['State Code']=='MT ']
      ND=SSA_data.loc[SSA_data['State Code']=='ND ']
      SD=SSA_data.loc[SSA_data['State Code']=='SD ']
@@ -59,17 +64,17 @@ Separated DAL by state.
      WY=SSA_data.loc[SSA_data['State Code']=='WY ']
 Separated DEN by state.
      
-9.)  IA=SSA_data.loc[SSA_data['State Code']=='IA ']
+11.)  IA=SSA_data.loc[SSA_data['State Code']=='IA ']
      KS=SSA_data.loc[SSA_data['State Code']=='KS ']
      MO=SSA_data.loc[SSA_data['State Code']=='MO ']
      NE=SSA_data.loc[SSA_data['State Code']=='NE ']
 Separated KCM by state.
 
-10.) NJ=SSA_data.loc[SSA_data['State Code']=='NJ ']
+12.) NJ=SSA_data.loc[SSA_data['State Code']=='NJ ']
      NY=SSA_data.loc[SSA_data['State Code']=='NY ']
 Separated NYC by state.
 
-11.) DC=SSA_data.loc[SSA_data['State Code']=='DC ']
+13.) DC=SSA_data.loc[SSA_data['State Code']=='DC ']
      DE=SSA_data.loc[SSA_data['State Code']=='DE ']
      MD=SSA_data.loc[SSA_data['State Code']=='MD ']
      PA=SSA_data.loc[SSA_data['State Code']=='PA ']
@@ -77,21 +82,24 @@ Separated NYC by state.
      WV=SSA_data.loc[SSA_data['State Code']=='WV ']
 Separated PHL by state.
 
-12.) AK=SSA_data.loc[SSA_data['State Code']=='AK ']
+14.) AK=SSA_data.loc[SSA_data['State Code']=='AK ']
      ID=SSA_data.loc[SSA_data['State Code']=='ID ']
      OR=SSA_data.loc[SSA_data['State Code']=='OR ']
      WA=SSA_data.loc[SSA_data['State Code']=='WA ']
 Separated SEA by state.
 
-13.) AZ=SSA_data.loc[SSA_data['State Code']=='AZ ']
+15.) AZ=SSA_data.loc[SSA_data['State Code']=='AZ ']
      CA=SSA_data.loc[SSA_data['State Code']=='CA ']
      HI=SSA_data.loc[SSA_data['State Code']=='HI ']
      NV=SSA_data.loc[SSA_data['State Code']=='NV ']
+Separated SFO by state.
 
-14.) SA_agg = SSA_data.groupby(['Region Code','Date_numeric'])['Population age 18-64'].mean()
+16.) SA_agg = SSA_data.groupby(['Region Code','Date_numeric'])['Population age 18-64'].mean()
 Grouped population by year and plotted by region.  
 
-15.) SSA_agg = SSA_data.groupby(['Region Code','Date_numeric'])['Percent of Adult Population Receiving SSA Adult Disability Benefits'].mean()
+17.) SSA_agg = SSA_data.groupby(['Region Code','Date_numeric'])['Percent of Adult Population Receiving SSA Adult Disability Benefits'].mean()
 Grouped those receiving disability by year and plotted by region.
+
+18.) SSA_agg = SSA_data.groupby(['Region Code','Date_numeric'])['Eligible Adult Population Filing Rate'].mean() Grouped those eligible to receive disability by year and plotted by region
 
 
